@@ -1,7 +1,6 @@
 const path = require("path");
 import { resolve } from "path";
 import handlebars from "vite-plugin-handlebars";
-import { defineConfig } from "vite";
 
 const pageData = {
   "/index.html": {
@@ -15,7 +14,7 @@ const pageData = {
 const root = path.resolve(__dirname, "src");
 const outDir = path.resolve(__dirname, "dist");
 
-export default defineConfig({
+export default {
   root,
   plugins: [
     handlebars({
@@ -31,4 +30,4 @@ export default defineConfig({
   server: {
     port: 8080,
   },
-});
+};
