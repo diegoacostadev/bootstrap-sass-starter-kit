@@ -1,18 +1,20 @@
-const path = require("path");
-import { resolve } from "path";
-import handlebars from "vite-plugin-handlebars";
+import { resolve } from 'path';
+import handlebars from 'vite-plugin-handlebars';
+import eslint from 'vite-plugin-eslint';
+
+const path = require('path');
 
 const pageData = {
-  "/index.html": {
-    title: "Bootstrap Sass Starter Kit",
+  '/index.html': {
+    title: 'Bootstrap Sass Starter Kit',
   },
-  "/about/index.html": {
-    title: "About Page",
+  '/about/index.html': {
+    title: 'About Page',
   },
 };
 
-const root = path.resolve(__dirname, "src");
-const outDir = path.resolve(__dirname, "dist");
+const root = path.resolve(__dirname, 'src');
+const outDir = path.resolve(__dirname, 'dist');
 
 export default {
   root,
@@ -21,11 +23,12 @@ export default {
       context(pagePath) {
         return pageData[pagePath];
       },
-      partialDirectory: resolve(__dirname, "src/partials"),
+      partialDirectory: resolve(__dirname, 'src/partials'),
     }),
+    eslint(),
   ],
   build: {
-    outDir: outDir,
+    outDir,
   },
   server: {
     port: 8080,
